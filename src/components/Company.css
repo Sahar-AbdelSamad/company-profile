@@ -1,4 +1,9 @@
-* {
-  padding: 0;
-  margin: 0;
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info:last-child,
+.info:nth-child(22) {
+  display: none;
 }
