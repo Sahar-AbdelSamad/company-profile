@@ -18,12 +18,12 @@ export const fetchDataSuccess = (payload) => ({
   payload,
 });
 
-export const fetchData = () => async (dispatch) => {
-  const company = 'AAPL';
+export const fetchData = (company) => async (dispatch) => {
   const response = await fetch(`https://financialmodelingprep.com/api/v3/profile/${company}?apikey=c0ea38db29a1ee3da5d66580c8949d28`);
   const data = await response.json();
   const info = Object.entries(data).map(([key, item]) => ({
     companyName: item.companyName,
+    symbol: item.symbol,
     industry: item.industry,
     ceo: item.ceo,
     country: item.country,
@@ -36,7 +36,6 @@ export const fetchData = () => async (dispatch) => {
     exchangeShortName: item.exchangeShortName,
     sector: item.sector,
     ipoDate: item.ipoDate,
-    symbol: item.symbol,
     mktCap: item.mktCap,
     lastDiv: item.lastDiv,
     price: item.price,
