@@ -20,7 +20,7 @@ const Company = () => {
         ? <Header title={company.companyName} /> : <Header title="Company" />}
       {(company)
         ? (
-          <NavLink key={uuidv4()} to={`/company-profile/${company.symbol}`}>
+          <NavLink key={uuidv4()} to={`/${company.symbol}`}>
             <section className="logo">
               <img src={company.image} alt="company logo" />
               <p>{company.companyName}</p>
