@@ -3,15 +3,14 @@ import {
 } from 'react-router-dom';
 import Home from './Home';
 import Company from './Company';
-import Header from './Header';
+import './App.css';
 
 const App = () => (
   <Router>
     <div className="App">
-      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Company" element={<Company />} />
+        <Route path="/:companySymbol" element={<Company />} />
       </Routes>
     </div>
   </Router>
