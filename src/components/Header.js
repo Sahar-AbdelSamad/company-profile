@@ -3,17 +3,29 @@ import { NavLink } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FiSettings } from 'react-icons/fi';
 import { MdKeyboardVoice } from 'react-icons/md';
+import PropTypes from 'prop-types';
 import './Header.css';
 
-const Header = () => (
+const Header = ({ title }) => (
   <header className="header">
-    <NavLink to="/"><IoIosArrowBack /></NavLink>
-    <p>Companies</p>
-    <div>
-      <MdKeyboardVoice style={{ marginRight: 20 }} />
-      <FiSettings />
-    </div>
+    {
+      (title !== 'Companies') ? <NavLink to="/"><IoIosArrowBack /></NavLink> : <p />
+    }
+
+    {
+      title && <p>{title}</p>
+    }
+    <ul className="icons">
+      <li><MdKeyboardVoice /></li>
+      <li><FiSettings /></li>
+    </ul>
   </header>
 );
 
+Header.propTypes = {
+  title: PropTypes.string,
+};
+Header.defaultProps = {
+  title: 'Companies',
+};
 export default Header;
