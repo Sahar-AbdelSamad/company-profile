@@ -10,7 +10,7 @@
 
 ## Live Demo
 
-You can see [the app live here](https://space-travelers-hub-pair-programming.netlify.app/)
+You can see [the app live here](https://sahar-abdelsamad.github.io/company-profile/)
 
 ## Setup
 
