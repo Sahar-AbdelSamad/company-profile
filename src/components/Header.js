@@ -9,7 +9,7 @@ import './Header.css';
 const Header = ({ title }) => (
   <header className="header">
     {
-      (title !== 'Companies') ? <NavLink to="/home"><IoIosArrowBack /></NavLink> : <p />
+      (title !== 'Companies') ? <NavLink to="/"><IoIosArrowBack /></NavLink> : <p />
     }
 
     {
