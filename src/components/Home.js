@@ -31,12 +31,12 @@ const Home = () => {
       <Header />
       <section className="homeSection1">
         <ul className="nasdaq">
-          <li>Nasdaq 100</li>
-          <li><img src={nasdaq} alt="nasdaq" /></li>
+          <li>Nasdaq-100</li>
+          <li><img src={nasdaq} alt="Nasdaq-100" /></li>
         </ul>
         <ul className="dowjones">
-          <li>Dow Jones</li>
-          <li><img src={dowjones} alt="dowjones" /></li>
+          <li>Dow Jones Industrial Average</li>
+          <li><img src={dowjones} alt="Dow Jones Industrial Average (DJIA)" /></li>
         </ul>
       </section>
       <section className="search-bar">

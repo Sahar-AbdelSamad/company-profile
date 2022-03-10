@@ -32,8 +32,6 @@ export const fetchData = (company) => async (dispatch) => {
     phone: item.phone,
     website: item.website,
     currency: item.currency,
-    exchange: item.exchange,
-    exchangeShortName: item.exchangeShortName,
     sector: item.sector,
     ipoDate: item.ipoDate,
     mktCap: item.mktCap,

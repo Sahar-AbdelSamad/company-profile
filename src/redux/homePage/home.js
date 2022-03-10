@@ -31,14 +31,14 @@ export const fetchComp = () => async (dispatch) => {
   const infoDowjones = dataDowjones.map((item) => ({
     symbol: item.symbol,
     name: item.name,
-    exchange: 'New York Stock Exchange NYSE',
+    exchange: 'Dow Jones Industrial Average (DJIA)',
   }));
   const responseNasdaq100 = await fetch('https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=db0b4c8add691463c952ec6896c9d51b');
   const dataNasdaq100 = await responseNasdaq100.json();
   const infoNasdaq100 = dataNasdaq100.map((item) => ({
     symbol: item.symbol,
     name: item.name,
-    exchange: 'Nasdaq Global Select NASDAQ',
+    exchange: 'Nasdaq-100',
   }));
   const info = [...infoDowjones, ...infoNasdaq100];
   dispatch(fetchCompaniesSuccess(info));
