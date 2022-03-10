@@ -5,6 +5,14 @@
   height: 100px;
 }
 
+.homeSection1 ul {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .homeSection1 ul img {
   height: 50px;
   width: 50px;
