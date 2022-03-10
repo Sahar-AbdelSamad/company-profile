@@ -10,7 +10,7 @@ const App = () => (
     <div className="App">
       <Routes>
         <Route path="/company-profile" element={<Home />} />
-        <Route path="/company/:companySymbol" element={<Company />} />
+        <Route path="/company-profile/:companySymbol" element={<Company />} />
       </Routes>
     </div>
   </Router>
