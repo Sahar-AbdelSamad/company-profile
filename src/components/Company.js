@@ -26,7 +26,7 @@ const Company = () => {
               <p>{company.companyName}</p>
             </section>
             <section className="info">
-              {Object.entries(company).filter(([key]) => (key !== 'companyName')).map(([key, value]) => (
+              {Object.entries(company).filter(([key]) => (key !== 'companyName' && key !== 'image')).map(([key, value]) => (
                 <div className="item" key={uuidv4()}>
                   <div className="key">
                     { key }

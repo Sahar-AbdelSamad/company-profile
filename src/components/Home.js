@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchData } from '../redux/company/company';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import nasdaq from '../images/nasdaq.png';
 import dowjones from '../images/dowjones.png';
 import Header from './Header';
@@ -11,7 +11,6 @@ const Home = () => {
   const [companyInfo, setCompanyInfo] = useState('');
   const [selected, setSelected] = useState('');
   const [search, setSearch] = useState('');
-  const dispatch = useDispatch();
 
   const select = (e) => {
     setCompanyInfo(e.target.value);
@@ -54,7 +53,7 @@ const Home = () => {
 
       <section className="cards">
         {filteredData === '' ? Object.entries(home).map(([key, value]) => (
-          <a onClick={() => dispatch(fetchData(value.symbol))} key={key} href={`/${value.symbol}`}>
+          <Link key={key} to={`/${value.symbol}`}>
             <ul>
               <li className="companyName">
                 {value.name}
@@ -64,9 +63,9 @@ const Home = () => {
                 {value.exchange}
               </li>
             </ul>
-          </a>
+          </Link>
         )) : Object.entries(filteredData).map(([key, value]) => (
-          <a onClick={() => dispatch(fetchData(value.symbol))} key={key} href={`/${value.symbol}`}>
+          <Link key={key} to={`/${value.symbol}`}>
             <ul>
               <li className="companyName">
                 {value.name}
@@ -76,7 +75,7 @@ const Home = () => {
                 {value.exchange}
               </li>
             </ul>
-          </a>
+          </Link>
         ))}
       </section>
     </>

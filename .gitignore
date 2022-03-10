@@ -25,3 +25,6 @@ yarn-error.log*
 .eslintrc.json
 .stylelintrc.json
 .babelrc
+
+# Local Netlify folder
+.netlify
