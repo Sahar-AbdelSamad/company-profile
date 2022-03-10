@@ -19,27 +19,25 @@ export const fetchCompaniesSuccess = (payload) => ({
 });
 
 export const fetchCompaniesOnNasdaq100 = () => async (dispatch) => {
-  const response = await fetch('https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=c0ea38db29a1ee3da5d66580c8949d28');
+  const response = await fetch('https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=db0b4c8add691463c952ec6896c9d51b');
   const data = await response.json();
   const info = data.map((item) => ({ symbol: item.symbol, name: item.name }));
   dispatch(fetchCompaniesSuccess(info));
 };
 
 export const fetchComp = () => async (dispatch) => {
-  const responseDowjones = await fetch('https://financialmodelingprep.com/api/v3/dowjones_constituent?apikey=c0ea38db29a1ee3da5d66580c8949d28');
+  const responseDowjones = await fetch('https://financialmodelingprep.com/api/v3/dowjones_constituent?apikey=db0b4c8add691463c952ec6896c9d51b');
   const dataDowjones = await responseDowjones.json();
   const infoDowjones = dataDowjones.map((item) => ({
     symbol: item.symbol,
     name: item.name,
-    sectore: item.sector,
     exchange: 'New York Stock Exchange NYSE',
   }));
-  const responseNasdaq100 = await fetch('https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=c0ea38db29a1ee3da5d66580c8949d28');
+  const responseNasdaq100 = await fetch('https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=db0b4c8add691463c952ec6896c9d51b');
   const dataNasdaq100 = await responseNasdaq100.json();
   const infoNasdaq100 = dataNasdaq100.map((item) => ({
     symbol: item.symbol,
     name: item.name,
-    sectore: item.sector,
     exchange: 'Nasdaq Global Select NASDAQ',
   }));
   const info = [...infoDowjones, ...infoNasdaq100];

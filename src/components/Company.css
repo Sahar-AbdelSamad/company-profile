@@ -1,9 +1,58 @@
+.logo {
+  display: flex;
+  height: 100px;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 100px;
+  width: 50%;
+  background-color: white;
+}
+
+.logo p {
+  font-weight: 700;
+  font-size: larger;
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: #4369b2;
+  padding-left: 10px;
+}
+
 .info {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.item:nth-child(odd) {
+  background-color: #1f4180;
+  text-decoration: underline;
+  text-decoration-color: #1f4180;
+}
+
+.item:nth-child(even) {
+  text-decoration: underline;
+  text-decoration-color: #4369b2;
+}
+
+.key {
+  text-transform: capitalize;
+}
+
+.info .item {
   display: flex;
   justify-content: space-between;
 }
 
-.info:last-child,
-.info:nth-child(22) {
+.info .item:last-child,
+.info .item:nth-child(22) {
   display: none;
 }

@@ -1,27 +1,44 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { fetchData } from '../redux/company/company';
+import Header from './Header';
 import './Company.css';
 
 const Company = () => {
-  const company = useSelector((state) => state.companyReducer);
+  const param = useParams();
+  const company = useSelector((state) => state.companyReducer[0]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData(param.companySymbol));
+  }, []);
+
   return (
     <>
-      <section className="logo">
-        <img src={company[0].image} alt="company logo" />
-      </section>
-      <section>
-        {Object.entries(company[0]).map(([key, value]) => (
-          <div className="info" key={uuidv4()}>
-            <div className="keys">
-              {key}
-            </div>
-            <div className="Value">
-              {value}
-            </div>
-          </div>
-        ))}
-      </section>
+      {(company)
+        ? <Header title={company.companyName} /> : <Header title="Company" />}
+      {(company)
+        ? (
+          <NavLink key={uuidv4()} to={`/${company.symbol}`}>
+            <section className="logo">
+              <img src={company.image} alt="company logo" />
+              <p>{company.companyName}</p>
+            </section>
+            <section className="info">
+              {Object.entries(company).filter(([key]) => (key !== 'companyName')).map(([key, value]) => (
+                <div className="item" key={uuidv4()}>
+                  <div className="key">
+                    { key }
+                  </div>
+                  <div>
+                    {value}
+                  </div>
+                </div>
+              ))}
+            </section>
+          </NavLink>
+        ) : <h1>Loading ...</h1>}
     </>
   );
 };
