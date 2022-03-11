@@ -11,6 +11,7 @@ Array [
       onClick={[Function]}
     >
       <svg
+        data-testid="back"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
