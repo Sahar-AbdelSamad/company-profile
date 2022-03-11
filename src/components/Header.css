@@ -1,0 +1,21 @@
+.header {
+  background-color: #3c63aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 45px;
+}
+
+.header p {
+  color: rgba(240, 248, 255, 0.781);
+}
+
+.icons {
+  display: flex;
+  list-style-type: none;
+}
+
+.icons li:last-child {
+  margin-left: 0.8rem;
+}
