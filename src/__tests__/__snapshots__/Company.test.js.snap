@@ -6,9 +6,8 @@ Array [
     className="header"
   >
     <a
-      aria-current="page"
-      className="active"
-      href="/"
+      className=""
+      href="/company-profile"
       onClick={[Function]}
     >
       <svg

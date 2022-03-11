@@ -72,11 +72,11 @@ Array [
       className="nasdaq"
     >
       <li>
-        Nasdaq 100
+        Nasdaq-100
       </li>
       <li>
         <img
-          alt="nasdaq"
+          alt="Nasdaq-100"
           src="nasdaq.png"
         />
       </li>
@@ -85,11 +85,11 @@ Array [
       className="dowjones"
     >
       <li>
-        Dow Jones
+        Dow Jones Industrial Average
       </li>
       <li>
         <img
-          alt="dowjones"
+          alt="Dow Jones Industrial Average (DJIA)"
           src="dowjones.png"
         />
       </li>
