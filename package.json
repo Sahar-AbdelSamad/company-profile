@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://sahar-abdelsamad.github.io/company-profile",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/user-event": "^13.5.0",
     "espree": "^9.3.1",
     "jest-fetch-mock": "^3.0.3",
@@ -12,7 +13,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
-    "react-redux": "^7.2.6",
+    "react-redux": "^7.2.9",
     "react-router-dom": "^6.2.2",
     "react-script": "^2.0.5",
     "react-scripts": "^5.0.1",
