@@ -19,14 +19,14 @@ export const fetchCompaniesSuccess = (payload) => ({
 });
 
 export const fetchComp = () => async (dispatch) => {
-  const responseDowjones = await fetch('https://financialmodelingprep.com/api/v3/dowjones_constituent?apikey=db0b4c8add691463c952ec6896c9d51b');
+  const responseDowjones = await fetch('https://financialmodelingprep.com/api/v3/dowjones_constituent/?apikey=c0ea38db29a1ee3da5d66580c8949d28 ');
   const dataDowjones = await responseDowjones.json();
   const infoDowjones = dataDowjones.map((item) => ({
     symbol: item.symbol,
     name: item.name,
     exchange: 'Dow Jones Industrial Average (DJIA)',
   }));
-  const responseNasdaq100 = await fetch('https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=db0b4c8add691463c952ec6896c9d51b');
+  const responseNasdaq100 = await fetch('https://financialmodelingprep.com/api/v3/nasdaq_constituent/?apikey=c0ea38db29a1ee3da5d66580c8949d28 ');
   const dataNasdaq100 = await responseNasdaq100.json();
   const infoNasdaq100 = dataNasdaq100.map((item) => ({
     symbol: item.symbol,
