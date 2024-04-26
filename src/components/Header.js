@@ -11,10 +11,7 @@ const Header = ({ title }) => (
     {
       (title !== 'Companies') ? <NavLink to="/company-profile"><IoIosArrowBack data-testid="back" /></NavLink> : <p />
     }
-
-    {
-      title && <p>{title}</p>
-    }
+    <p>{title}</p>
     <ul className="icons">
       <li><MdKeyboardVoice /></li>
       <li><FiSettings /></li>

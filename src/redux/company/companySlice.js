@@ -29,7 +29,7 @@ export const fetchCompany = createAsyncThunk('company/fetchCompany', async (comp
   return info;
 });
 
-const initialState = {};
+const initialState = [];
 
 export const companySlice = createSlice({
   name: 'company',

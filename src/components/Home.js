@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import nasdaq from '../images/nasdaq.png';
 import dowjones from '../images/dowjones.png';
 import './Home.css';
 import { fetchCompanies } from '../redux/companies/companiesSlice';
 
-const Home = () => {
+const Home = ({ setTitle }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCompanies());
+    setTitle('Companies');
   }, []);
   const home = useSelector((state) => state.companies);
   const [companyInfo, setCompanyInfo] = useState('');
@@ -79,6 +81,12 @@ const Home = () => {
       </section>
     </>
   );
+};
+Home.propTypes = {
+  setTitle: PropTypes.func,
+};
+Home.defaultProps = {
+  setTitle: (''),
 };
 
 export default Home;
