@@ -1,26 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { fetchData } from '../redux/company/company';
-import Header from './Header';
+import { fetchCompany } from '../redux/company/companySlice';
+// import Header from './Header';
 import './Company.css';
 
 const Company = () => {
   const param = useParams();
-  const company = useSelector((state) => state.companyReducer[0]);
+  const company = useSelector((state) => state.company[0]);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchData(param.companySymbol));
+    dispatch(fetchCompany(param.companySymbol));
   }, []);
 
   return (
     <>
-      {(company)
-        ? <Header title={company.companyName} /> : <Header title="Company" />}
+      {/* {(company)
+        ? <Header title={company.companyName} /> : <Header title="Company" />} */}
       {(company)
         ? (
-          <NavLink key={uuidv4()} to={`/${company.symbol}`}>
+          <section key={uuidv4()}>
             <section className="logo">
               <img src={company.image} alt="company logo" />
               <p>{company.companyName}</p>
@@ -37,7 +37,7 @@ const Company = () => {
                 </div>
               ))}
             </section>
-          </NavLink>
+          </section>
         ) : <h1>Loading ...</h1>}
     </>
   );

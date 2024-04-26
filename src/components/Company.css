@@ -1,13 +1,13 @@
 .logo {
   display: flex;
-  height: 100px;
+  height: 140px;
   align-items: center;
 }
 
 .logo img {
-  max-height: 100px;
+  max-height: 100%;
   width: 50%;
-  background-color: white;
+  background-color: #fff6;
 }
 
 .logo p {

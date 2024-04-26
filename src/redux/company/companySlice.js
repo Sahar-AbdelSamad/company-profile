@@ -1,25 +1,7 @@
-const FETCH_SUCCESS = 'company-profile/company/FETCH_SUCCESS';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const initialState = [];
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_SUCCESS:
-      return ([...action.payload]);
-    default:
-      return state;
-  }
-};
-
-export default reducer;
-
-export const fetchDataSuccess = (payload) => ({
-  type: FETCH_SUCCESS,
-  payload,
-});
-
-export const fetchData = (company) => async (dispatch) => {
-  const response = await fetch(`https://financialmodelingprep.com/api/v3/profile/${company}?apikey=c0ea38db29a1ee3da5d66580c8949d28 `);
+export const fetchCompany = createAsyncThunk('company/fetchCompany', async (companySymbol) => {
+  const response = await fetch(`https://financialmodelingprep.com/api/v3/profile/${companySymbol}?apikey=a5ccf6f99fb133a28866a64b4bef97ea `);
   const data = await response.json();
   const info = Object.entries(data).map(([key, item]) => ({
     companyName: item.companyName,
@@ -44,6 +26,18 @@ export const fetchData = (company) => async (dispatch) => {
     image: item.image,
     id: key,
   }));
+  return info;
+});
 
-  dispatch(fetchDataSuccess(info));
-};
+const initialState = {};
+
+export const companySlice = createSlice({
+  name: 'company',
+  initialState,
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCompany.fulfilled, (state, action) => action.payload);
+  },
+});
+
+export default companySlice.reducer;

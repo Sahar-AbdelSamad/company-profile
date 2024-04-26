@@ -1,34 +1,37 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import nasdaq from '../images/nasdaq.png';
 import dowjones from '../images/dowjones.png';
-import Header from './Header';
 import './Home.css';
+import { fetchCompanies } from '../redux/companies/companiesSlice';
 
 const Home = () => {
-  const home = useSelector((state) => state.homeReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCompanies());
+  }, []);
+  const home = useSelector((state) => state.companies);
   const [companyInfo, setCompanyInfo] = useState('');
-  const [selected, setSelected] = useState('');
+  const [symbol, setSymbol] = useState('');
   const [search, setSearch] = useState('');
 
-  const select = (e) => {
+  const selectCompany = (e) => {
+    setSearch('');
     setCompanyInfo(e.target.value);
-    const symbol = e.target.value.slice(0, 8);
-    setSelected(symbol);
+    setSymbol(e.target.childNodes[e.target.selectedIndex].id);
   };
-
-  const filteredData = home.filter((company) => {
-    const data = Object.keys(company).some((key) => {
-      const res = company[key].toLowerCase().includes(selected.toLowerCase())
-      && company[key].toLowerCase().includes(search.toLowerCase());
-      return res;
+  const filteredData = home.filter((item) => {
+    const filterValue = Object.keys(item).some((key) => {
+      const searchedItem = item[key].toLowerCase().includes(search.toLowerCase());
+      const selectedItem = item[key].toLowerCase().includes(symbol.toLowerCase());
+      return searchedItem && selectedItem;
     });
-    return data;
+    return filterValue;
   });
+
   return (
     <>
-      <Header />
       <section className="homeSection1">
         <ul className="nasdaq">
           <li>Nasdaq-100</li>
@@ -40,31 +43,27 @@ const Home = () => {
         </ul>
       </section>
       <section className="search-bar">
-        <input type="search" placeholder="Search Company Name or Symbol" value={search} onChange={(e) => setSearch(e.target.value)} />
-        <select id="company" name="company" value={companyInfo} onChange={select}>
+        <input
+          type="search"
+          placeholder="Search Company Name or Symbol"
+          value={search}
+          onChange={(e) => {
+            setSymbol('');
+            setCompanyInfo('');
+            setSearch(e.target.value);
+          }}
+        />
+        <select id="company" name="company" value={companyInfo} onChange={selectCompany}>
           <option value="">Choose a company</option>
           {Object.entries(home).map(([key, value]) => (
-            <option key={key} value={`${value.name} (${value.symbol})`}>
+            <option key={key} id={`${value.symbol}`} value={`${value.name} (${value.symbol})`}>
               {`${value.name} (${value.symbol})`}
             </option>
           ))}
         </select>
       </section>
-
       <section className="cards">
-        {filteredData === '' ? Object.entries(home).map(([key, value]) => (
-          <Link key={key} to={`/${value.symbol}`}>
-            <ul>
-              <li className="companyName">
-                {value.name}
-                <span style={{ fontWeight: 300 }}>{`   (${value.symbol})`}</span>
-              </li>
-              <li>
-                {value.exchange}
-              </li>
-            </ul>
-          </Link>
-        )) : Object.entries(filteredData).map(([key, value]) => (
+        {Object.entries(filteredData || home).map(([key, value]) => (
           <Link key={key} to={`/${value.symbol}`}>
             <ul>
               <li className="companyName">
